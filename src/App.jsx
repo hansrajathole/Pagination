@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 const App = () => {
-  const [data, setData] = useState(null)
+  const [dataa, setData] = useState([])
   const fetchData = async () => {
     try {
       const response = await fetch(`https://dummyjson.com/products?limit=50`)
@@ -10,7 +10,7 @@ const App = () => {
       }
       const data = await response.json()
       // console.log(data)
-      setData(data)
+      setData(data.products)
       console.log('Data fetched successfully:', data);
       
     }
@@ -28,7 +28,13 @@ const App = () => {
       <h1>Fetch Data Example</h1>
       <p>Check the console for fetched data.</p>
       {
-
+        dataa?.map((item , idx) => 
+          <div key={idx}>
+            <h2>{item.title}</h2>
+            <p>{item.description}</p>
+            <img src={item.image} alt={item.title} style={{ width: '100px', height: '100px' }} />
+          </div>
+        )
       }
     </div>
   )
