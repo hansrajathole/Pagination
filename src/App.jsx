@@ -32,7 +32,7 @@ const App = () => {
           <div key={idx}>
             <h2>{item.title}</h2>
             <p>{item.description}</p>
-            <img src={item.image} alt={item.title} style={{ width: '100px', height: '100px' }} />
+            <img src={item.images} alt={item.title} style={{ width: '100px', height: '100px' }} />
           </div>
         )
       }
