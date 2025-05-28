@@ -24,6 +24,16 @@ const App = () => {
     setcurrentPage(p)
   }
 
+  const goToNextPage =()=>{
+    setcurrentPage((prev)=>prev+1)
+  }
+
+  const goToPrivPage = ()=>{
+    setcurrentPage((pre)=>pre-1)
+  }
+
+
+
   return data.length < 0 ? (
     <div>No data Found</div>
   ) : (
@@ -35,9 +45,13 @@ const App = () => {
         ))}
       </div>
       <div className="page-container">
+        <button disabled={currentPage === 0} onClick={goToPrivPage} className="page">◀</button>
         {
-          [...Array(noOfPages).keys()].map((p)=> <span key={p} onClick={()=>handlePage(p)} className="page">{p}</span> )
+          [...Array(noOfPages).keys()].map((p)=> <span key={p} onClick={()=>handlePage(p)} className={`page ${currentPage ===  p ? 'active' : ''}`}>{p}</span> )
         }
+
+        <button disabled={currentPage === noOfPages-1} onClick={goToNextPage} className="page">▶</button>
+
       </div>
     </div>
   );
